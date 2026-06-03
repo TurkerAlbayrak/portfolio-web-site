@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Türker Albayrak - Ankarada yazılım mühendisliği öğrencisi. Python, web araçları, mobil uygulamalar, gömülü sistemler ve güvenlik odaklı ürünler geliştirir."
+    />
+    <meta name="theme-color" content="#f7f5ef" />
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (prefersDark ? "dark" : "light");
+
+      document.documentElement.dataset.theme = theme;
+      document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute("content", theme === "dark" ? "#111312" : "#f7f5ef");
+    </script>
+    <title>Türker Albayrak</title>
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header" aria-label="Üst menü">
+        <nav class="nav" aria-label="Sayfa içi bağlantılar">
+          <a href="#work">Projeler</a>
+          <a href="#contact">İletişim</a>
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Temayı değiştir">
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow">Ankara · Yazılım mühendisliği öğrencisi</p>
+            <h1 id="hero-title">Türker Albayrak</h1>
+            <p class="lead">
+              Python, web araçları, güvenlik pratikleri, gömülü sistemler üzerine çalışan; ölçeklenebilir,
+              anlaşılır, kullanılabilir; web, mobil, masaüstü yazılımlar ve gömülü sistemler
+              geliştiren bir geliştirici.
+            </p>
+          </div>
+          <figure class="portrait">
+            <img
+              src="https://avatars.githubusercontent.com/u/221347638?v=4"
+              alt="Türker Albayrak GitHub profil fotoğrafı"
+            />
+          </figure>
+        </section>
+
+        <section class="intro" aria-label="Kısa profil">
+          <p>
+            OSTİM Teknik Üniversitesi'nde yazılım mühendisliği öğrencisiyim.
+            Öğrenirken üretmeyi seviyorum: masaüstü yardımcı uygulamaları,
+            geliştirici araçları, API prototipleri, güvenlik laboratuvarları, gömülü sistemler alanlarında çalışmalar yapıyorum.
+          </p>
+          <dl class="facts">
+            <div>
+              <dt>Public repo</dt>
+              <dd>48</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section id="work" class="section" aria-labelledby="work-title">
+          <div class="section-heading">
+            <p class="eyebrow">Projeler</p>
+          </div>
+          <div class="project-list">
+            <article class="project">
+              <div>
+                <p class="meta">Python · Desktop</p>
+                <h3>SecureCrypt</h3>
+                <p>Parola ile dosya şifreleme ve çözme için geliştirilmiş masaüstü uygulaması.</p>
+              </div>
+              <a href="https://github.com/TurkerAlbayrak/python-file-crypt-desktop-app" target="_blank" rel="noreferrer">
+                İncele
+              </a>
+            </article>
+            <article class="project">
+              <div>
+                <p class="meta">JavaScript · Chrome Extension</p>
+                <h3>YouTube Focus</h3>
+                <p>Shorts, yorumlar ve önerileri kaldırıp video izlerken not almayı kolaylaştıran eklenti.</p>
+              </div>
+              <a href="https://github.com/TurkerAlbayrak/youtube-focus-chrome-extension" target="_blank" rel="noreferrer">
+                İncele
+              </a>
+            </article>
+            <article class="project">
+              <div>
+                <p class="meta">FastAPI · API</p>
+                <h3>Test Data Generator</h3>
+                <p>Test ve prototipleme için gerçekçi sahte veri üreten hızlı bir API denemesi.</p>
+              </div>
+              <a href="https://github.com/TurkerAlbayrak/fastapi-test-data-generator-api" target="_blank" rel="noreferrer">
+                İncele
+              </a>
+            </article>
+            <article class="project">
+              <div>
+                <p class="meta">Python · Security Lab</p>
+                <h3>SQL Injection Lab</h3>
+                <p>Eğitim amaçlı güvenlik testleri için hazırlanmış Flask tabanlı laboratuvar.</p>
+              </div>
+              <a href="https://github.com/TurkerAlbayrak/python-flask-sqlinjection-lab" target="_blank" rel="noreferrer">
+                İncele
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+          <p class="eyebrow">İletişim</p>
+          <h2 id="contact-title">Bir proje, staj veya iş fikri için konuşabiliriz.</h2>
+          <div class="contact-links">
+            <a href="mailto:turkeralb@gmail.com">turkeralb@gmail.com</a>
+            <a href="https://github.com/TurkerAlbayrak" target="_blank" rel="noreferrer">github.com/TurkerAlbayrak</a>
+            <a href="https://www.linkedin.com/in/yusuf-turker-albayrak/" target="_blank" rel="noreferrer">
+              linkedin.com/in/yusuf-turker-albayrak
+            </a>
+            <a href="https://www.instagram.com/turkeralbayrak0/" target="_blank" rel="noreferrer">
+              instagram.com/turkeralbayrak0
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const themeToggle = document.querySelector(".theme-toggle");
+      const themeColor = document.querySelector('meta[name="theme-color"]');
+
+      themeToggle.addEventListener("click", () => {
+        const nextTheme =
+          document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+
+        document.documentElement.dataset.theme = nextTheme;
+        localStorage.setItem("theme", nextTheme);
+        themeColor.setAttribute(
+          "content",
+          nextTheme === "dark" ? "#111312" : "#f7f5ef",
+        );
+      });
+    </script>
+  </body>
+</html>

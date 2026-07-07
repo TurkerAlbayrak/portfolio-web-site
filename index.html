@@ -26,24 +26,32 @@
     <div class="page">
       <header class="site-header" aria-label="Üst menü">
         <nav class="nav" aria-label="Sayfa içi bağlantılar">
-          <a href="#work">Projeler</a>
-          <a href="#contact">İletişim</a>
+          <a href="#work" data-i18n="navProjects">Projeler</a>
+          <a href="#contact" data-i18n="navContact">İletişim</a>
         </nav>
-        <button class="theme-toggle" type="button" aria-label="Temayı değiştir">
-          <span class="theme-toggle-icon" aria-hidden="true"></span>
-        </button>
+        <div style="display: flex; gap: 8px;">
+          <button class="lang-toggle" type="button" aria-label="Dili değiştir" onclick="toggleLanguage()">
+            <span class="lang-toggle-text" id="langText">EN</span>
+          </button>
+          <button class="theme-toggle" type="button" aria-label="Temayı değiştir">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+          </button>
+        </div>
       </header>
 
       <main id="top">
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy">
-            <p class="eyebrow">Ankara · Yazılım mühendisliği öğrencisi</p>
+            <p class="eyebrow" data-i18n="heroEyebrow">Ankara · Yazılım mühendisliği öğrencisi</p>
             <h1 id="hero-title">Türker Albayrak</h1>
-            <p class="lead">
+            <p class="lead" data-i18n="heroLead">
               Python, web araçları, güvenlik pratikleri, gömülü sistemler üzerine çalışan; ölçeklenebilir,
               anlaşılır, kullanılabilir; web, mobil, masaüstü yazılımlar ve gömülü sistemler
               geliştiren bir geliştirici.
             </p>
+            <div style="margin-top: 32px;">
+              <a href="cv.pdf" class="button primary" target="_blank" rel="noopener noreferrer" data-i18n="resumeBtn">Özgeçmiş (CV)</a>
+            </div>
           </div>
           <figure class="portrait">
             <img
@@ -54,7 +62,7 @@
         </section>
 
         <section class="intro" aria-label="Kısa profil">
-          <p>
+          <p data-i18n="introText">
             OSTİM Teknik Üniversitesi'nde yazılım mühendisliği öğrencisiyim.
             Öğrenirken üretmeyi seviyorum: masaüstü yardımcı uygulamaları,
             geliştirici araçları, API prototipleri, güvenlik laboratuvarları, gömülü sistemler alanlarında çalışmalar yapıyorum.
@@ -63,55 +71,17 @@
 
         <section id="work" class="section" aria-labelledby="work-title">
           <div class="section-heading">
-            <p class="eyebrow">Projeler</p>
+            <p class="eyebrow" data-i18n="workEyebrow">Projeler</p>
+            <p data-i18n="workDesc" style="margin: 0; color: var(--muted); font-size: 1.1rem; max-width: 600px;">Bu liste GitHub üzerinden otomatik olarak çekilir. Üzerinde çalıştığım son 10 projeyi gösterir ve sürekli güncel kalır.</p>
           </div>
-          <div class="project-list">
-            <article class="project">
-              <div>
-                <p class="meta">Python · Desktop</p>
-                <h3>SecureCrypt</h3>
-                <p>Parola ile dosya şifreleme ve çözme için geliştirilmiş masaüstü uygulaması.</p>
-              </div>
-              <a href="https://github.com/TurkerAlbayrak/python-file-crypt-desktop-app" target="_blank" rel="noreferrer">
-                İncele
-              </a>
-            </article>
-            <article class="project">
-              <div>
-                <p class="meta">JavaScript · Chrome Extension</p>
-                <h3>YouTube Focus</h3>
-                <p>Shorts, yorumlar ve önerileri kaldırıp video izlerken not almayı kolaylaştıran eklenti.</p>
-              </div>
-              <a href="https://github.com/TurkerAlbayrak/youtube-focus-chrome-extension" target="_blank" rel="noreferrer">
-                İncele
-              </a>
-            </article>
-            <article class="project">
-              <div>
-                <p class="meta">FastAPI · API</p>
-                <h3>Test Data Generator</h3>
-                <p>Test ve prototipleme için gerçekçi sahte veri üreten hızlı bir API denemesi.</p>
-              </div>
-              <a href="https://github.com/TurkerAlbayrak/fastapi-test-data-generator-api" target="_blank" rel="noreferrer">
-                İncele
-              </a>
-            </article>
-            <article class="project">
-              <div>
-                <p class="meta">Python · Security Lab</p>
-                <h3>SQL Injection Lab</h3>
-                <p>Eğitim amaçlı güvenlik testleri için hazırlanmış Flask tabanlı laboratuvar.</p>
-              </div>
-              <a href="https://github.com/TurkerAlbayrak/python-flask-sqlinjection-lab" target="_blank" rel="noreferrer">
-                İncele
-              </a>
-            </article>
+          <div class="project-list" id="github-projects">
+            <p style="color: var(--muted);" id="loadingText">GitHub'dan projeler yükleniyor...</p>
           </div>
         </section>
 
         <section id="contact" class="contact" aria-labelledby="contact-title">
-          <p class="eyebrow">İletişim</p>
-          <h2 id="contact-title">Bir proje, staj veya iş fikri için konuşabiliriz.</h2>
+          <p class="eyebrow" data-i18n="contactEyebrow">İletişim</p>
+          <h2 id="contact-title" data-i18n="contactTitle">Bir proje, staj veya iş fikri için konuşabiliriz.</h2>
           <div class="contact-links">
             <a href="mailto:turkeralb@gmail.com">turkeralb@gmail.com</a>
             <a href="https://github.com/TurkerAlbayrak" target="_blank" rel="noreferrer">github.com/TurkerAlbayrak</a>
@@ -125,6 +95,88 @@
         </section>
       </main>
     </div>
+    
+    <script>
+      const translations = {
+        tr: {
+          navProjects: "Projeler",
+          navContact: "İletişim",
+          heroEyebrow: "Ankara · Yazılım mühendisliği öğrencisi",
+          heroLead: "Python, web araçları, güvenlik pratikleri, gömülü sistemler üzerine çalışan; ölçeklenebilir, anlaşılır, kullanılabilir; web, mobil, masaüstü yazılımlar ve gömülü sistemler geliştiren bir geliştirici.",
+          resumeBtn: "Özgeçmiş (CV)",
+          introText: "OSTİM Teknik Üniversitesi'nde yazılım mühendisliği öğrencisiyim. Öğrenirken üretmeyi seviyorum: masaüstü yardımcı uygulamaları, geliştirici araçları, API prototipleri, güvenlik laboratuvarları, gömülü sistemler alanlarında çalışmalar yapıyorum.",
+          workEyebrow: "Projeler",
+          workDesc: "Bu liste GitHub üzerinden otomatik olarak çekilir. Üzerinde çalıştığım son 10 projeyi gösterir ve sürekli güncel kalır.",
+          contactEyebrow: "İletişim",
+          contactTitle: "Bir proje, staj veya iş fikri için konuşabiliriz.",
+          loadingProjects: "GitHub'dan projeler yükleniyor...",
+          errorProjects: "Projeler yüklenirken bir hata oluştu.",
+          noDesc: "Açıklama bulunmuyor.",
+          viewBtn: "İncele"
+        },
+        en: {
+          navProjects: "Projects",
+          navContact: "Contact",
+          heroEyebrow: "Ankara · Software Engineering Student",
+          heroLead: "A developer working on Python, web tools, security practices, and embedded systems; building scalable, clear, and usable web, mobile, desktop software, and embedded systems.",
+          resumeBtn: "Resume (CV)",
+          introText: "I'm a software engineering student at OSTİM Technical University. I enjoy creating while learning: I work on desktop utilities, developer tools, API prototypes, security labs, and embedded systems.",
+          workEyebrow: "Projects",
+          workDesc: "This list is automatically fetched from GitHub. It shows my latest 10 updated repositories and is always up to date.",
+          contactEyebrow: "Contact",
+          contactTitle: "Let's talk about a project, internship, or job idea.",
+          loadingProjects: "Loading projects from GitHub...",
+          errorProjects: "An error occurred while loading projects.",
+          noDesc: "No description available.",
+          viewBtn: "View"
+        }
+      };
+
+      const savedLang = localStorage.getItem("lang") || "tr";
+      document.documentElement.lang = savedLang;
+
+      function updateLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.getElementById("langText").textContent = lang === "tr" ? "EN" : "TR";
+        
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+          }
+        });
+
+        // Also translate dynamic text if loading
+        const loading = document.getElementById("loadingText");
+        if (loading) {
+            loading.textContent = translations[lang].loadingProjects;
+        }
+
+        // Translate already rendered projects
+        document.querySelectorAll(".project").forEach(article => {
+            const descEl = article.querySelector("div > p:last-child");
+            const btnEl = article.querySelector("a");
+            
+            if (descEl && (descEl.textContent === translations["tr"].noDesc || descEl.textContent === translations["en"].noDesc)) {
+                descEl.textContent = translations[lang].noDesc;
+            }
+            if (btnEl) {
+                btnEl.textContent = translations[lang].viewBtn;
+            }
+        });
+      }
+
+      function toggleLanguage() {
+        const currentLang = document.documentElement.lang;
+        const nextLang = currentLang === "tr" ? "en" : "tr";
+        localStorage.setItem("lang", nextLang);
+        updateLanguage(nextLang);
+      }
+
+      // Initial apply
+      updateLanguage(savedLang);
+    </script>
+
     <script>
       const themeToggle = document.querySelector(".theme-toggle");
       const themeColor = document.querySelector('meta[name="theme-color"]');
@@ -140,6 +192,86 @@
           nextTheme === "dark" ? "#111312" : "#f7f5ef",
         );
       });
+    </script>
+    <script>
+      async function fetchGitHubProjects() {
+        const projectList = document.getElementById("github-projects");
+        const currentLang = document.documentElement.lang || "tr";
+        try {
+          const response = await fetch("https://api.github.com/users/TurkerAlbayrak/repos?sort=pushed&per_page=10");
+          if (!response.ok) throw new Error("API Hatası");
+          
+          const repos = await response.json();
+          projectList.innerHTML = "";
+          
+          const repoElements = await Promise.all(repos.map(async repo => {
+            let descriptionText = repo.description;
+
+            if (!descriptionText) {
+                try {
+                    const branch = repo.default_branch || 'main';
+                    const readmeRes = await fetch(`https://raw.githubusercontent.com/${repo.owner.login}/${repo.name}/${branch}/README.md`);
+                    if (readmeRes.ok) {
+                        const readmeText = await readmeRes.text();
+                        const lines = readmeText.split('\n');
+                        for (let line of lines) {
+                            line = line.trim();
+                            if (line && !line.startsWith('#') && !line.startsWith('<') && !line.startsWith('![')) {
+                                descriptionText = line.substring(0, 120) + (line.length > 120 ? '...' : '');
+                                break;
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.error("Readme fetch error", e);
+                }
+            }
+
+            if (!descriptionText) {
+                descriptionText = translations[document.documentElement.lang].noDesc;
+            }
+
+            const article = document.createElement("article");
+            article.className = "project";
+            
+            const contentDiv = document.createElement("div");
+            
+            const meta = document.createElement("p");
+            meta.className = "meta";
+            meta.textContent = repo.language ? repo.language : "GitHub Repository";
+            
+            const h3 = document.createElement("h3");
+            let cleanName = repo.name.replace(/-/g, " ");
+            cleanName = cleanName.replace(/\b\w/g, l => l.toUpperCase());
+            h3.textContent = cleanName;
+            
+            const p = document.createElement("p");
+            p.textContent = descriptionText;
+            
+            contentDiv.appendChild(meta);
+            contentDiv.appendChild(h3);
+            contentDiv.appendChild(p);
+            
+            const a = document.createElement("a");
+            a.href = repo.html_url;
+            a.target = "_blank";
+            a.rel = "noreferrer";
+            a.textContent = translations[document.documentElement.lang].viewBtn;
+            
+            article.appendChild(contentDiv);
+            article.appendChild(a);
+            
+            return article;
+          }));
+
+          repoElements.forEach(el => projectList.appendChild(el));
+
+        } catch (error) {
+          console.error(error);
+          projectList.innerHTML = `<p style="color: var(--muted);">${translations[document.documentElement.lang].errorProjects}</p>`;
+        }
+      }
+      fetchGitHubProjects();
     </script>
   </body>
 </html>
